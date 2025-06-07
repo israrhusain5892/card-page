@@ -112,13 +112,17 @@ container.innerHTML+=card;
 
 })
 
-// event delegation applying click event on parent but moving handler from child to parent
-container.addEventListener('click',(e)=>{
-    const card=e.target.parentNode;
-    card.classList.toggle('add-style')
-    const sizeContainer=card.querySelector('.size-color-container');
+// event delegation: applying click event on parent but moving handler from child to parent
+container.addEventListener('click', (e) => {
+    let card = e.target.closest('.card');
+    if (!card) return; 
+    let sizeContainer = card.querySelector('.size-color-container');
+    if (!sizeContainer) return;
+
+    card.classList.toggle('add-style');
     sizeContainer.classList.toggle('expand');
-})
+});
+
 
 
 
