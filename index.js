@@ -112,15 +112,13 @@ container.innerHTML+=card;
 
 })
 
-const card=document.querySelectorAll(".card");
-
-card.forEach(element => {
-    element.addEventListener('click',()=>{
-     element.classList.toggle('add-style')
-   const sizeContainer= element.querySelector('.size-color-container')
-   sizeContainer.classList.toggle('expand')
+// event delegation applying click event on parent but moving handler from child to parent
+container.addEventListener('click',(e)=>{
+    const card=e.target.parentNode;
+    card.classList.toggle('add-style')
+    const sizeContainer=card.querySelector('.size-color-container');
+    sizeContainer.classList.toggle('expand');
 })
 
-});
 
 
